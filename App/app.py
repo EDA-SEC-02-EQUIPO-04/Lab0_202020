@@ -98,7 +98,7 @@ def countElementsFilteredByColumn(criteria, column, lst):
             Lista en la cual se realizará el conteo, debe estar inicializada
     Return:
         counter :: int
-            la cantidad de veces ue aparece un elemento con el criterio definido
+            la cantidad de veces que aparece un elemento con el criterio definido
     """
     if len(lst) == 0:
         print('La lista esta vacía')
@@ -112,6 +112,52 @@ def countElementsFilteredByColumn(criteria, column, lst):
         t1_stop = process_time()  # tiempo final
         print('Tiempo de ejecución ', t1_stop - t1_start, ' segundos')
     return counter
+
+
+def encontrarBP(lst):
+    loadCSVFile("Data/MoviesCastingRaw-large.csv", lst)
+    contador = 0
+    lst1 = []
+    for i in range(0,len(lst)):
+        if lst1[i]["vote_average"]>=6:
+            lst1.append(lst1[i]["vote_average"])
+            contador +=1
+    return contador
+
+ # Alternativa 1
+def ID(criteria,lst):
+    loadCSVFile("Data/MoviesCastingRaw-large.csv", lst)
+    numofmovies = []
+    for element in lst:
+            if criteria.lower() in element['director_name'].lower():  # filtrar por nombre
+                numofmovies.append(element["id"]) 
+    return numofmovies
+    
+
+# Alternativa 2
+def countElementsByCriteria(criteria, column,lst):
+    """
+    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
+    """
+    find = encontrarBP(lst)
+    find2 = ID(criteria,lst)
+    findprom = []
+    count = 0
+    if len(lst) == 0:
+        print("La lista esta vacía")
+
+    else:
+        t2_start = process_time()  # tiempo inicial
+        for i in range(0,len(lst)):
+            if find2 in lst:
+                if lst[i]["vote_average"]>=6:
+                    findprom.append(lst[i]["vote_average"])
+                    count +=1
+                    prom = sum(findprom)/ count
+
+        t2_stop = process_time()  # tiempo final
+        print("Tiempo de ejecución ", t2_stop - t2_start, " segundos")
+    return (find,prom)
 
 def encontrar_ID(nombre,lst):
     lista = []
@@ -182,7 +228,16 @@ def main():
         inputs = input('Seleccione una opción para continuar:\n')  # leer opción ingresada
         if len(inputs) > 0:
             if int(inputs[0]) == 1:  # opcion 1
-                """ Alternativa 1
+
+                """Alternativa 1
+                loadCSVFile("Data/MoviesDetailsCleaned-large.csv", lista)  # llamar funcion cargar datos
+                print("Datos cargados, " + str(len(lista)) + " elementos cargados")
+            elif int(inputs[0]) == 2:  # opcion 2   
+                if len(lista) == 0:  # obtener la longitud de la lista
+                    print("La lista esta vacía")
+                  """
+
+                """ Alternativa 2
                 loadCSVFile("Data/MoviesDetailsCleaned-large.csv", lista)  # llamar funcion cargar datos
                 print("Datos cargados, " + str(len(lista)) + " elementos cargados")
                 """
@@ -195,6 +250,7 @@ def main():
             elif int(inputs[0]) == 2:  # opcion 2
                 if len(details_list) == 0:  # obtener la longitud de la lista
                     print('La lista esta vacía')
+
                 else:
                     print('La lista tiene ' + str(len(details_list)) + ' elementos')
             elif int(inputs[0]) == 3:  # opcion 3
