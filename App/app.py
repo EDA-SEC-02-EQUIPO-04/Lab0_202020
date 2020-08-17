@@ -267,16 +267,16 @@ def main():
                     counter = countElementsByCriteria(criteria, lista)
                     print("Coinciden ", counter, " elementos con el crtierio: '", criteria, "' (en construcción ...)")
                 """
-            criteria = input('Ingrese un director para consultar su cantidad de películas:\n')  # filtrar columna
-            counter_movies = countElementsFilteredByColumn(criteria, 'director_name', casting_list)
-            print('Coinciden', counter_movies, 'elementos con el director', criteria)
-        elif int(inputs[0]) == 4:  # opcion 4
-            criteria = input('Ingrese el nombre del director para conocer la votación en sus películas:\n')
-            counter, average = countElementsByCriteria(criteria, 6, details_list, casting_list)
-            print('Existen', counter, 'buenas películas del director', criteria, 'en el catálogo')
-            print('Las buenas películas de este director tienen un promedio de votación de', average, 'puntos.')
-        elif int(inputs[0]) == 0:  # opcion 0, salir
-            sys.exit(0)
+                criteria = input('Ingrese un director para consultar su cantidad de películas:\n')  # filtrar columna
+                counter_movies = countElementsFilteredByColumn(criteria, 'director_name', casting_list)
+                print('Coinciden', counter_movies, 'elementos con el director', criteria)
+            elif int(inputs[0]) == 4:  # opcion 4
+                criteria = input('Ingrese el nombre del director para conocer la votación en sus películas:\n')
+                counter, average = countElementsByCriteria(criteria, 6, details_list, casting_list)
+                print('Existen', counter, 'buenas películas del director', criteria, 'en el catálogo')
+                print('Las buenas películas de este director tienen un promedio de votación de', average, 'puntos.')
+            elif int(inputs[0]) == 0:  # opcion 0, salir
+                sys.exit(0)
 
 
 if __name__ == '__main__':
