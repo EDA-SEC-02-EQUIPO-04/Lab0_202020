@@ -10,7 +10,7 @@ Estructuras de Datos y Algoritmos de la Universidad de los Andes.
   - Código: 201923434
 - María Alejandra Vargas
   - Correo: ma.vargas73@uniandes.edu.co
-  - Código: XXXXXXXXX
+  - Código: 201123148
 - Juan Alegría
   - Correo: j.alegria@uniandes.edu.co
   - Código: 202011282
